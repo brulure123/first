@@ -2,7 +2,6 @@ package com.test.first.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +20,11 @@ import jakarta.websocket.server.PathParam;
 @RequestMapping("api/posts")
 public class PostController {
 
-    @Autowired
-    private PostService postService;
+    private final PostService postService;
+
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     @GetMapping
     public List<Post> getAll() {
@@ -35,7 +37,7 @@ public class PostController {
     }
     
     @PostMapping
-    public Post create(@RequestBody Post post, PathParam params) {
+    public Post create(@RequestBody Post post) {
         System.out.print(post);
         
         return this.postService.createPost(post);

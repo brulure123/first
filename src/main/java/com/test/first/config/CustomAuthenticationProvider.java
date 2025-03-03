@@ -1,10 +1,7 @@
 package com.test.first.config;
 
 import com.test.first.dto.SecurityUser;
-import com.test.first.models.User;
 import com.test.first.services.UserDetailsServiceImpl;
-import com.test.first.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
