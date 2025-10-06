@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.test.first.models.Post;
 import com.test.first.services.PostService;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 @RequestMapping("api/posts")
 public class PostController {
@@ -38,6 +36,7 @@ public class PostController {
     
     @PostMapping
     public Post create(@RequestBody Post post) {
+        // Setting up the user
         System.out.print(post);
         
         return this.postService.createPost(post);

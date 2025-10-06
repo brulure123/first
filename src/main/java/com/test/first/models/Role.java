@@ -1,20 +1,16 @@
 package com.test.first.models;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity(name = "roles")
 public class Role {
 
     @Id
@@ -25,11 +21,6 @@ public class Role {
     private String name; // Nom du rôle (ex: ROLE_ADMIN)
 
     @ManyToMany(mappedBy = "roles")
-    private List<User> users;
+    private Set<User> users = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY) // Ou Eager si vous préférez
-    @JoinTable(name = "roles_authorities", // Table de jointure entre roles et authorities
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id"))
-    private List<Authority> authorities; // Liste des autorités du rôle
 }

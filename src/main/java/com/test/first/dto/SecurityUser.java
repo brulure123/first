@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class SecurityUser implements UserDetails {
@@ -22,10 +23,10 @@ public class SecurityUser implements UserDetails {
     // Implémentation des méthodes de UserDetails
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.user.getRoles().stream()
-                .flatMap(role -> role.getAuthorities().stream()) // Aplatir la liste des autorités
-                .map(authority -> new SimpleGrantedAuthority(authority.getName()))
-                .collect(Collectors.toList());
+        return List.of();
+        //return this.user.getRole().getAuthorities().stream()
+        //        .map(authority -> new SimpleGrantedAuthority(authority.getName()))
+        //        .collect(Collectors.toList());
     }
 
     @Override

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "comments")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -29,10 +29,10 @@ public class Comment {
     private Long id;
     private String content;
     private LocalDateTime commentDateTime;
-   
-    @JsonBackReference
+
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
+    @JsonBackReference
     private Post post;
 
     @ManyToOne

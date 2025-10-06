@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "categories")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
